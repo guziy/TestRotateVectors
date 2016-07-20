@@ -11,9 +11,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 from matplotlib import gridspec
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+from pathlib import Path
 
+from config import DATA_DIR
 
-nc_file = 'iceh_inst.2003-01-02-00000.nc'
+nc_file = Path(DATA_DIR).joinpath('iceh_inst.2003-01-02-00000.nc')
+
 fh = Dataset(nc_file, mode='r')
 
 lons = fh.variables['ULON'][:]

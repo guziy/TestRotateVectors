@@ -32,7 +32,11 @@ def main():
     # ue[:, :] = 1
     # ve[:, :] = 0
 
-    urot, vrot = b.rotate_vector(ue, ve, *b(xx, yy, inverse=True))
+    lons, lats = b(xx, yy, inverse=True)
+
+    urot, vrot = b.rotate_vector(ue, ve, lons, lats)
+    im = b.pcolormesh(xx, yy, lons)
+    b.colorbar(im)
 
     stride = 20
     b.quiver(xx[::stride, ::stride], yy[::stride, ::stride], urot[::stride, ::stride], vrot[::stride, ::stride], scale=0.2, width=0.003)
